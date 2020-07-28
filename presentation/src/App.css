@@ -1,4 +1,11 @@
+ul{
+  list-style: none;
+}
 
+li{
+  text-align: center;
+  
+}
 
 .App {
   text-align: center;
