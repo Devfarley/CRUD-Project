@@ -1,13 +1,11 @@
 import React from 'react';
 
 
- class AddMovieForm extends React.Component{
+ class DeleteMovieForm extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            title: "",
-            rating: "",
-            length:""
+            _id: ""
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,30 +20,29 @@ import React from 'react';
     }
     handleSubmit(event){
         event.preventDefault();
-        const {...data} = this.state
+        if (window.confirm("Are you sure you want to delete this movie?")) {
+            const {...data} = this.state
         const api_url = process.env.REACT_APP_API_URL
         fetch(`${api_url}/movies`,{
-            method: 'POST',
+            method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json' 
             },
             body: JSON.stringify(data)
-        }).then(() => this.setState({ title: "",rating: "",length:""}))
+        }).then(() => this.setState({ _id: ""}))
         .then(this.props.refresh)
+        alert("The movie has been deleted")
+        } else {
+          alert("The movie was not deleted")
+        }
     }
     render(){
         return(
         <div>
-            <h1>Add Movie</h1>
+            <h1>Delete Movie</h1>
             <form>
-                <label htmlFor="movieTitle">Movie Title: </label>
-                <input type="text" name='title' id="movieTitle" value={this.state.title} onChange={this.handleChange}/>
-                <br></br>
-                <label htmlFor="movieRating">Movie Rating: </label>
-                <input type="text" name='rating' id="rating" value={this.state.rating} onChange={this.handleChange}/>
-                <br></br>
-                <label htmlFor="movieLength">Movie Length: </label>
-                <input type="text" name='length' id="length" value={this.state.length} onChange={this.handleChange}/>
+                <label htmlFor="movieId">Movie Id: </label>
+                <input type="text" name='_id' id="movieId" value={this.state._id} onChange={this.handleChange}/>
                 <br></br>
                 <input type="submit" value="submit" onClick={this.handleSubmit} />
             </form>
@@ -54,4 +51,4 @@ import React from 'react';
     }
 }
 
-export default AddMovieForm;
+export default DeleteMovieForm;

@@ -1,6 +1,7 @@
 import React from 'react';
 import Movie from './Movie';
-import AddMovieForm from './Form'
+import AddMovieForm from './AddMovie'
+import DeleteMovieForm from './DeleteMovie'
 
 class Movies extends React.Component{
     state = {
@@ -26,6 +27,7 @@ class Movies extends React.Component{
                 <ul>
                     {displayMovies}
                 </ul>
+                <DeleteMovieForm refresh={this.getMovies}/>
             </div>    
         );
     }
