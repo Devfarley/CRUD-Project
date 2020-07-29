@@ -53,7 +53,7 @@ const deleteMovie= (id) => {
 
             const db = client.db(db_name);
             const collection = db.collection(col_name);
-            collection.findOneAndDelete(id, (err, result) => {
+            collection.findOneAndDelete({_id: new ObjectId(id)}, (err, result) => {
                 assert.equal(err, null)
                 resolve(result.value);
                 client.close();

@@ -18,8 +18,8 @@ router.post('/', (req, res, next) => {
 });
 
 router.delete('/', (req, res, next) => {
-    const body = req.body
-    deleteMovie(body).then(data => res.send(data));
+    const id = req.body._id
+    deleteMovie(id).then(data => res.send(data));
 });
 
 module.exports = router;
