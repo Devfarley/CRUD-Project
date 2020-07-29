@@ -2,18 +2,24 @@ const express = require('express');
 const router = express.Router();
 const {
     readMovies,
-    createMovie
+    createMovie,
+    deleteMovie
 } = require('../../data/movies');
 
 router.get('/', (req, res, next) =>{
     readMovies().then(data => {
         res.send(data);
     });
-})
+});
 
 router.post('/', (req, res, next) => {
     const body = req.body
-    createMovie(body).then(data => res.send(data))
-})
+    createMovie(body).then(data => res.send(data));
+});
+
+router.delete('/', (req, res, next) => {
+    const body = req.body
+    deleteMovie(body).then(data => res.send(data));
+});
 
 module.exports = router;
