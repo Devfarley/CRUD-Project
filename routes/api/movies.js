@@ -3,7 +3,8 @@ const router = express.Router();
 const {
     readMovies,
     createMovie,
-    deleteMovie
+    deleteMovie,
+    upsertMovie
 } = require('../../data/movies');
 
 router.get('/', (req, res, next) =>{
@@ -15,6 +16,12 @@ router.get('/', (req, res, next) =>{
 router.post('/', (req, res, next) => {
     const body = req.body
     createMovie(body).then(data => res.send(data));
+});
+
+router.put('/:id', (req, res, next) => {
+    const id = req.params.id
+    const body = req.body
+    upsertMovie(id, body).then(data => res.send(data));
 });
 
 router.delete('/', (req, res, next) => {

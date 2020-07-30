@@ -23,7 +23,7 @@ class Movies extends React.Component{
         const displayMovies = this.state.movies.map(movie => <Movie key={movie._id} movie={movie.title}/>) 
         return (
             <div>
-                <AddMovieForm refresh={this.getMovies}/>
+                <AddMovieForm refresh={this.getMovies}/> 
                 <ul>
                     {displayMovies}
                 </ul>
