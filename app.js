@@ -6,7 +6,7 @@ const logger = require('morgan');
 const cors = require('cors')
 
 // Route imports
-const moviesRouter = require('./routes/api/movies')
+const moviesRouter = require('./routes/api/movies');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
@@ -26,7 +26,7 @@ app.use(cors());
 // Assigning routes to App
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/movies', moviesRouter)
+app.use('/api/movies', moviesRouter)
 
 
 // catch 404 and forward to error handler
