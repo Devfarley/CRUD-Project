@@ -80,7 +80,7 @@ const readMovieById= (id) => {
     });
     return iou
 };
-
+// Ask Wes about the new option if he was able to get it to return the modified document
 const upsertMovie = (id, movieObj) => {
     const iou = new Promise((resolve, reject) => {
         MongoClient.connect(url, options, (err, client) => {

@@ -9,10 +9,10 @@ import React from 'react';
             rating: "",
             length:""
         }
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        // this.handleChange = this.handleChange.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleChange(event){
+    handleChange = (event) => {
         console.log(event.target)
         this.setState({
                 [event.target.name]: event.target.value
@@ -21,7 +21,7 @@ import React from 'react';
         )
         
     }
-    handleSubmit(event){
+    handleSubmit = (event) => {
         event.preventDefault();
         const {...data} = this.state
         const api_url = process.env.REACT_APP_API_URL
@@ -38,7 +38,7 @@ import React from 'react';
         return(
         <div>
             <h1>Add Movie</h1>
-            <form>
+            <form onSubit={this.handleSubmit}>
                 <label htmlFor="movieTitle">Movie Title: </label>
                 <input type="text" name='title' id="movieTitle" value={this.state.title} onChange={this.handleChange}/>
                 <br></br>
@@ -48,7 +48,7 @@ import React from 'react';
                 <label htmlFor="movieLength">Movie Length: </label>
                 <input type="text" name='length' id="length" value={this.state.length} onChange={this.handleChange}/>
                 <br></br>
-                <input type="submit" value="submit" onClick={this.handleSubmit} />
+                <input type="submit" value="submit" />
             </form>
         </div>
         );
