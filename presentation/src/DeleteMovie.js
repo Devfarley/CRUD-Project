@@ -38,13 +38,12 @@ import React from 'react';
     }
     render(){
         return(
-        <div>
-            <h1>Delete Movie</h1>
-            <form>
+        <div class="flex-container">
+            <form onSubmit={this.handleSubmit} >
+                <h1>Delete Movie</h1>
                 <label htmlFor="movieId">Movie Id: </label>
                 <input type="text" name='_id' id="movieId" value={this.state._id} onChange={this.handleChange}/>
-                <br></br>
-                <input type="submit" value="submit" onClick={this.handleSubmit} />
+                <input type="submit" value="submit"  />
             </form>
         </div>
         );

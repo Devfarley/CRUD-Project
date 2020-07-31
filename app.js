@@ -29,9 +29,6 @@ app.use('/users', usersRouter);
 app.use('/api/movies', moviesRouter)
 
 
-//Port
-app.listen(process.env.PORT)
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
